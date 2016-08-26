@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>My AngularJS App</title>
+<link rel="stylesheet" href="vendor/ng-table/ng-table.min.css">
+<link rel='stylesheet' href='vendor/bootstrap/bootstrap.min.css'>
+</head>
+<body ng-app="myApp">
+	<div class="col-sm-6" ng-controller="userCtrl">
+		<div>
+			<table ng-table="tableParams" class="table" show-filter="true">
+				<tr ng-repeat="row in $data">
+					<td data-title="'Name'" filter="{name: 'text'}" sortable="'name'">{{row.name}}</td>
+					<td data-title="'Age'" filter="{age: 'number'}" sortable="'age'">{{row.age}}</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<script src="vendor/angular/angular.js"></script>
+	<script src="vendor/ng-table/ng-table.js"></script>
+	<!-- ladash, restangular-->
+	<script src="vendor/lodash/lodash.min.js"></script>   
+	<script src="vendor/restangular/restangular.min.js"></script> 
+	
+	<script src="js/app.js"></script>
+</body>
+</html>
