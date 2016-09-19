@@ -46,10 +46,12 @@ public class UserService {
 	}
 	
 	public User updateUser(User user) {
+		getUserById(user.getId());
 		return userRepository.save(user);	
 	}
 	
 	public void deleteUser(Long id) {
+		getUserById(id);
 		userRepository.delete(id);
 	}
 	

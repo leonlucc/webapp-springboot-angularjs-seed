@@ -4,7 +4,7 @@ This project is an application skeleton for a SpringBoot & AngularJS web app. Yo
 ## Dependencies
 ### Back-end Microservice
 * `spring-boot-starter-web` to create a stand-alone Spring applications
-* `spring-boot-starter-data-jpa` to access data with JPA
+* `spring-boot-starter-data-jpa` to access database with JPA
 * `h2` the Java SQL database
 * `spring-boot-starter-test` to create a Spring Unit test
 
@@ -50,7 +50,7 @@ ____pom.xml
 | | | | | | | | |____ws
 | | | | | | | | | |____App.java                      --> main class of SpringBoot
 | | | | | | | | | |____controller
-| | | | | | | | | | |____UserController.java         --> RESTful APIs of User Control
+| | | | | | | | | | |____UserController.java         --> RESTful APIs of User Management
 | | | | | | | | | |____domain
 | | | | | | | | | | |____User.java                   --> user info
 | | | | | | | | | |____exception

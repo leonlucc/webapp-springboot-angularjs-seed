@@ -18,17 +18,17 @@ import com.leonlu.code.sample.webapp.ws.service.UserService;
 @RequestMapping("/user")
 public class UserController {
 	private UserService userService;
-	
+
 	@Autowired
 	public UserController(UserService userService) {
 		this.userService = userService;
 	}
-	
+
 	@RequestMapping(method = RequestMethod.GET)
     public Collection<User> getUsers() {
 		return userService.getAllUsers();
     }
-	
+
 	@RequestMapping(method = RequestMethod.POST, consumes = "application/json")
 	@ResponseStatus(HttpStatus.CREATED)
     public User addUser(@RequestBody User user) {
@@ -40,29 +40,25 @@ public class UserController {
 		}
         return userService.addUser(user);
     }
-	
+
 	@RequestMapping(value="/{id}", method = RequestMethod.GET)
     public User getUser(@PathVariable("id") Long id) {
         return userService.getUserById(id);
     }
-	
+
 	@RequestMapping(value="/{id}", method = RequestMethod.PUT, consumes = "application/json")
-    public User updateUser(@PathVariable("id") String id, @RequestBody User user) {
+    public User updateUser(@PathVariable("id") Long id, @RequestBody User user) {
 		if(user.getName() == null && user.getAge() == null) {
 			throw new IllegalArgumentException("Parameter 'name' and 'age' must not both be null");
 		}
-		//user.set
-        return userService.addUser(user);
+		user.setId(id);
+        return userService.updateUser(user);
     }
-	
+
 	@RequestMapping(value="/{id}", method = RequestMethod.DELETE)
     public RestResultResponse deleteUser(@PathVariable("id") Long id) {
-		try {
-			userService.deleteUser(id);
-			return new RestResultResponse(true);
-		} catch(Exception e) {
-			return new RestResultResponse(false, e.getMessage());
-		}
+		userService.deleteUser(id);
+		return new RestResultResponse(true);
     }
 
 }

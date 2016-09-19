@@ -13,7 +13,7 @@ import com.leonlu.code.sample.webapp.ws.service.UserService;
 public class App {
 	@Bean
     CommandLineRunner init(UserService userService) {
-		// add 5 new users after app are started
+		// add 5 new users after app is started
         return (evt) ->
                 Arrays.asList("john,alex,mike,mary,jenny".split(","))
                         .forEach(item -> {
